@@ -10,8 +10,8 @@ class MyInt(int):
 
     def __eq__(self, other):
         """ reverse equality into non equality """
-        return supper().__ne__(other)
+        return super().__ne__(other)
 
     def __ne__(self, other):
         """ reverse non equality into equality """
-        return supper().__eq__(other)
+        return super().__eq__(other)
