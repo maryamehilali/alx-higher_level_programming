@@ -63,5 +63,5 @@ class Base(object):
         else:
             with open(file_name, "r", encoding="utf-8") as a_file:
                 list_dictn = cls.from_json_string(a_file.read())
-                list_inst = [cls.create(cls, **i) for i in list_dictn] 
+                list_inst = [cls.create(cls, **i) for i in list_dictn]
                 return list_inst
