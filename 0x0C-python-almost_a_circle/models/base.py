@@ -29,10 +29,12 @@ class Base(object):
     def from_json_string(json_string):
         """method that returns the list of the JSON string
         representation json_string"""
+        list_j = []
         if json_string is None or json_string == "":
-            return "[]"
+            return list_j
         else:
-            return [json.loads(json_string)]
+            list_j = [json.loads(json_string)]
+            return list_j
 
     @classmethod
     def save_to_file(cls, list_objs):
