@@ -33,7 +33,7 @@ class Base(object):
         if json_string is None or json_string == "":
             return list_j
         else:
-            list_j = [json.loads(json_string)]
+            list_j = json.loads(json_string)
             return list_j
 
     @classmethod
