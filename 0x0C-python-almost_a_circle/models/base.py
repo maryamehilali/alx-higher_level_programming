@@ -68,5 +68,7 @@ class Base(object):
         else:
             with open(file_name, "r") as a_file:
                 list_dictn = cls.from_json_string(a_file.read())
-                list_inst = [cls.create(cls, **i) for i in list_dictn]
+                list_inst = []
+                for i in range(len(list_dictn)):
+                    list_inst.append(cls.create(cls, **list_dictn[i]))
                 return list_inst
