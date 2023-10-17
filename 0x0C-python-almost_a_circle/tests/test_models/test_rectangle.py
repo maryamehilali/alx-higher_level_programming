@@ -24,3 +24,10 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(new.x, 3)
         self.assertEqual(new.y, 4)
         self.assertEqual(new.id, 18)
+
+    def test_missing_args(self):
+        """case of missing args"""
+        with self.assertRaises(TypeError):
+            new = Rectangle(2)
+        with self.assertRaises(TypeError):
+            new = Rectangle()
