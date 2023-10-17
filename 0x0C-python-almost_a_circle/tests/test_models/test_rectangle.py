@@ -7,6 +7,11 @@ import unittest
 
 class TestRectangle(unittest.TestCase):
     """suite tests for Rectangle Class"""
+
+    def setUp(self):
+        """ Method invoked for each test """
+        Base._Base__nb_objects = 0
+
     def test_rectangle1(self):
         """test new rectangle instance"""
         new = Rectangle(1, 1)
@@ -43,3 +48,47 @@ class TestRectangle(unittest.TestCase):
             new.__x
         with self.assertRaises(AttributeError):
             new.__y
+        self.assertEqual(new._Rectangle__width, 2)
+
+    def test_typeerror(self):
+        """test for type errors"""
+        with self.assertRaises(TypeError) as e:
+            Rectangle(width=2.5, height=3)
+        self.assertEqual(str(e.exception), "width must be an integer")
+        with self.assertRaises(TypeError) as e:
+            Rectangle(width=[2], height=5)
+        self.assertEqual(str(e.exception), "width must be an integer")
+        with self.assertRaises(TypeError) as e:
+            Rectangle(width=2, height=float('inf'))
+        self.assertEqual(str(e.exception), "height must be an integer")
+        with self.assertRaises(TypeError) as e:
+            Rectangle(1, 2, 'j', 5)
+        self.assertEqual(str(e.exception), "x must be an integer")
+        with self.assertRaises(TypeError) as e:
+            Rectangle(1, 2, 4, {})
+        self.assertEqual(str(e.exception), "y must be an integer")
+
+    def test_valueError(self):
+        """tests for value errors"""
+        with self.assertRaises(ValueError) as e:
+            Rectangle(width=-2, height=5)
+        self.assertEqual(str(e.exception), "width must be > 0")
+        with self.assertRaises(ValueError) as e:
+            Rectangle(width=2, height=0)
+        self.assertEqual(str(e.exception), "height must be > 0")
+        with self.assertRaises(ValueError) as e:
+            Rectangle(1, 2, -5, 1)
+        self.assertEqual(str(e.exception), "x must be >= 0")
+        with self.assertRaises(ValueError) as e:
+            Rectangle(1, 2, 0, -2)
+        self.assertEqual(str(e.exception), "y must be >= 0")
+
+    def test_area(self):
+        """test area method"""
+        new = Rectangle(4, 7)
+        self.assertEqual(new.area(), 28)
+
+    def test_display(self):
+        """test for display method"""
+        new = Rectangle(2, 3)
+        
