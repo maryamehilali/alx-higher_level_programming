@@ -31,3 +31,15 @@ class TestRectangle(unittest.TestCase):
             new = Rectangle(2)
         with self.assertRaises(TypeError):
             new = Rectangle()
+
+    def test_acces_private(self):
+        """accessing private attributes"""
+        new = Rectangle(2, 4, 2, 3, 25)
+        with self.assertRaises(AttributeError):
+            new.__width
+        with self.assertRaises(AttributeError):
+            new.__height
+        with self.assertRaises(AttributeError):
+            new.__x
+        with self.assertRaises(AttributeError):
+            new.__y
