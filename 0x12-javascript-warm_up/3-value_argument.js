@@ -8,5 +8,5 @@ const array = process.argv;
 if (array[2]) {
   console.log(array[2]);
 } else {
-  console.log('No Argument');
+  console.log('No argument');
 }
