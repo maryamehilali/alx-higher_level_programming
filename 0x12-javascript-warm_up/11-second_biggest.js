@@ -7,20 +7,20 @@ If no argument passed, print 0
 If the number of arguments is 1, print 0
 */
 const array = process.argv;
-if (process.argv.lenght <= 3) {
-  console.log(0);
-} else {
+if (array[3]) {
   let i = 3;
   let first = array[2];
-  let second = array[3];
+  let second = array[2];
   while (array[i]) {
-    if (array[i] > first) {
+    if (parseInt(array[i]) > first) {
       second = first;
       first = array[i];
-    } else if (array[i] > second) {
+    } else if (parseInt(array[i]) > second) {
       second = array[i];
     }
     i++;
   }
   console.log(second);
+} else {
+  console.log(0);
 }
