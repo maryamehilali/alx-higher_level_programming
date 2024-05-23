@@ -9,10 +9,10 @@ If the number of arguments is 1, print 0
 const array = process.argv;
 if (array[3]) {
   let i = 3;
-  let first = array[2];
-  let second = array[2];
+  let first = parseInt(array[2]);
+  let second = parseInt(array[3]);
   while (array[i]) {
-    if (parseInt(array[i]) > first) {
+    if (parseInt(array[i]) >= first) {
       second = first;
       first = array[i];
     } else if (parseInt(array[i]) > second) {
